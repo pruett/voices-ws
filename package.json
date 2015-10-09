@@ -1,0 +1,26 @@
+{
+  "name": "get-voices-websocket-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "DEBUG=socket.io* babel-node index.js",
+    "pretest": "standard",
+    "test": "mocha --compilers js:babel/register  --require ./test/test_helper.js  --recursive",
+    "test:watch": "npm run test -- --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "chai": "^3.2.0",
+    "chai-immutable": "^1.3.0",
+    "mocha": "^2.2.5",
+    "standard": "^5.3.1"
+  },
+  "dependencies": {
+    "immutable": "^3.7.4",
+    "redux": "^3.0.0",
+    "socket.io": "^1.3.6"
+  }
+}
