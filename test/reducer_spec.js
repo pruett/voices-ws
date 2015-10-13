@@ -11,6 +11,7 @@ describe('reducer', () => {
     const nextState = reducer(initialState, action)
 
     expect(nextState).to.equal(fromJS({
+      fetching: false,
       games: {
         1: { }
       }

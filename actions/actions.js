@@ -20,7 +20,11 @@ function getRecordListValues (field, id, record, nextValue, state) {
 }
 
 export function setState (state, appState) {
-  return state.merge(appState)
+  return state.withMutations(state => {
+    state
+      .merge(appState)
+      .set('fetching', false)
+  })
 }
 
 export function createSession (state, gameId) {

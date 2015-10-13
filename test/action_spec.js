@@ -16,6 +16,7 @@ describe('application logic', () => {
       })
       const nextState = setState(initialState, appData)
       expect(nextState).to.equal(fromJS({
+        fetching: false,
         games: {
           1: { title: 'Test Game', questionIds: [1, 2] },
           2: { title: 'Test Game', questionIds: [1, 2] }
@@ -32,6 +33,24 @@ describe('application logic', () => {
       }
       const nextState = setState(initialState, appData)
       expect(nextState).to.equal(fromJS({
+        fetching: false,
+        games: {
+          1: { title: 'Test Game', questionIds: [1, 2] }
+        }
+      }))
+    })
+
+    it('sets the app state fetching flag to false', () => {
+      const initialState = Map()
+      const appData = {
+        fetching: true,
+        games: {
+          1: { title: 'Test Game', questionIds: [1, 2] }
+        }
+      }
+      const nextState = setState(initialState, appData)
+      expect(nextState).to.equal(fromJS({
+        fetching: false,
         games: {
           1: { title: 'Test Game', questionIds: [1, 2] }
         }
