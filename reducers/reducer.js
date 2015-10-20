@@ -1,5 +1,5 @@
 import { Map } from 'immutable'
-import { setState, createSession, vote } from '../actions/actions'
+import { setState, createSession, saveGame, vote } from '../actions/actions'
 
 export default function reducer (state = Map(), action) {
   switch (action.type) {
@@ -9,6 +9,8 @@ export default function reducer (state = Map(), action) {
       return createSession(state, action.id)
     case 'VOTE':
       return vote(state, action.sessionId, action.questionId, action.responseId)
+    case 'SAVE_GAME':
+      return saveGame(state, action.state)
     default:
       return state
   }

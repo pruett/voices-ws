@@ -34,6 +34,8 @@ export function createSession (state, gameId) {
   return state.withMutations(state => {
     state
       .mergeDeepIn(['sessions'], Map([[ nextSessionId.toString(), Map({ }) ]]))
+      .mergeDeepIn(['sessions', nextSessionId.toString()], Map([[ 'id', nextSessionId ]]))
+      .mergeDeepIn(['sessions', nextSessionId.toString()], Map([[ 'gameId', gameId ]]))
       .mergeDeepIn(['games', gameId.toString()], [[ 'sessionIds', gameSessionIds ]])
   })
 }
@@ -46,4 +48,8 @@ export function vote (state, sessionId, questionId, responseId) {
       questionId.toString(),
       responseId.toString()], 0, val => val + 1
   )
+}
+
+export let saveGame = (state, nextState) => {
+  return state.merge(nextState)
 }
