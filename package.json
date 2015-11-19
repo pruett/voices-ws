@@ -4,7 +4,8 @@
   "description": "WebSocket server to use with Voices Survey app",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=socket.io* babel-node index.js",
+    "oldstart": "DEBUG=socket.io* babel-node index.js",
+    "start": "node -r babel-register src/server.js",
     "pretest": "standard",
     "test": "mocha --compilers js:babel/register  --require ./test/test_helper.js  --recursive",
     "test:watch": "npm run test -- --watch"
@@ -12,18 +13,15 @@
   "author": "Kevin Pruett",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^3.2.0",
-    "chai-immutable": "^1.3.0",
-    "mocha": "^2.2.5",
+    "babel-core": "^6.1.20",
+    "babel-preset-es2015": "^6.1.18",
+    "chai": "^3.4.1",
+    "chai-immutable": "^1.5.2",
+    "mocha": "^2.3.3",
     "standard": "^5.3.1"
   },
   "dependencies": {
-    "babel": "^5.8.23",
-    "immutable": "^3.7.4",
-    "redux": "^3.0.2",
-    "socket.io": "^1.3.7"
-  },
-  "engines": {
-    "node": "4.2.1"
+    "hapi": "^11.1.0",
+    "rethinkdb": "^2.2.0"
   }
 }
